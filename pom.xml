@@ -12,7 +12,7 @@
 	<artifactId>temporal</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>temporal</name>
-	<description>Este es un proyecto CRUD con Spring</description>
+	<description>Este es el examen de T2 de LP</description>
 	<url/>
 	<licenses>
 		<license/>
