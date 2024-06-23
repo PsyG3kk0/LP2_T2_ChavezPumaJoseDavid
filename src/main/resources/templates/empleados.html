@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Empleados</title>
+    <!-- Estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Lista de Empleados</h2>
+
+        <a th:href="@{/registrar_empleado}" class="btn btn-primary mb-3">Registrar Empleado</a>
+
+        <!-- Tabla de empleados -->
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th>DNI</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Dirección</th>
+                    <th>Correo</th>
+                    <th>Área</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="empleado : ${empleados}">
+                    <td th:text="${empleado.dni_empleado}"></td>
+                    <td th:text="${empleado.nombre_empleado}"></td>
+                    <td th:text="${empleado.apellido_empleado}"></td>
+                    <td th:text="${empleado.fechaNacimiento}"></td>
+                    <td th:text="${empleado.direccion}"></td>
+                    <td th:text="${empleado.correo}"></td>
+                    <td th:text="${empleado.areaEntity.nombre_area}"></td>
+                    <td>
+                        <a th:href="@{'/editar_empleado/' + ${empleado.dni_empleado}}"
+                            class="btn btn-sm btn-primary mr-2">Editar</a>
+                        <a th:href="@{'/eliminar_empleado/' + ${empleado.dni_empleado}}"
+                            class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Scripts de Bootstrap y jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

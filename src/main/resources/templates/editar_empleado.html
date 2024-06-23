@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Empleado</title>
+    <!-- Estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Editar Empleado</h2>
+    <form th:object="${empleado}" th:action="@{/editar_empleado}" method="post">
+        <input type="hidden" th:field="*{dni_empleado}">
+        <div class="form-group">
+            <label>Nombre:</label>
+            <input type="text" class="form-control" th:field="*{nombre_empleado}" required>
+        </div>
+        <div class="form-group">
+            <label>Apellido:</label>
+            <input type="text" class="form-control" th:field="*{apellido_empleado}" required>
+        </div>
+		<div class="form-group">
+		    <label>Fecha de Nacimiento:</label>
+		    <input type="text" class="form-control" th:field="*{fechaNacimiento}" th:value="${empleado.fechaNacimiento}" required>
+		</div>
+        <div class="form-group">
+            <label>Dirección:</label>
+            <input type="text" class="form-control" th:field="*{direccion}" required>
+        </div>
+        <div class="form-group">
+            <label>Correo:</label>
+            <input type="email" class="form-control" th:field="*{correo}" required>
+        </div>
+        <div class="form-group">
+            <label>Área:</label>
+            <select class="form-control" th:field="*{areaEntity}">
+                <option th:each="area : ${areas}"
+                        th:value="${area.area_id}"
+                        th:text="${area.nombre_area}"
+                        th:selected="${area.area_id == empleado.areaEntity.area_id}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    </form>
+</div>
+
+<!-- Scripts de Bootstrap y jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
